@@ -103,7 +103,7 @@ public class SirenAction extends SirenObject implements SubItemMixin {
       if (field.getType().equalsIgnoreCase("file")) {
         // interpret string value as path
         Path file = Paths.get(field.getValue());
-        RequestBody fileBody = RequestBody.create(MediaType.parse(Files.probeContentType(file)), file.toFile());
+        RequestBody fileBody = RequestBody.create(MediaType.parse("application/pdf"), file.toFile());
         builder.addFormDataPart(field.getName(), file.getFileName().toString(), fileBody);
       } else {
         builder.addFormDataPart(field.getName(), field.getValue());
